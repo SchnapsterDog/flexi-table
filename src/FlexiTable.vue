@@ -44,7 +44,7 @@
    * */
     function getDummyRows(){
         let result = [];
-        for(let i=0; i<5; i++){
+        for(let i=0; i<50; i++){
             let data = {
                 row1: 'Row'+(i+1), row2: 'Row'+(i+1), row3: 'Row'+(i+1), row4: 'Row'+(i+1), row: 'Row'+(i+1)
             };
@@ -76,25 +76,27 @@
         props,//add props into component
         data() {
             return {
-                currentPage: 1,
-                perPage: 4,
-                perPageOptions: [4, 8],
+                pagination: {
+                    currentPage: 1,
+                    perPage: 5,
+                    perPageOptions: [5, 10],
+                },
                 source: []//get final result
             }
         },
         computed: {
             offset() {
-                return ((this.currentPage - 1) * this.perPage);
+                return ((this.pagination.currentPage - 1) * this.pagination.perPage);
             },
             limit() {
-                return (this.offset + this.perPage);
+                return (this.offset + this.pagination.perPage);
             },
             numOfPages() {
                 return Math.ceil(this.getRows.length / this.perPage);
             },
             result() {
                 if (this.offset > this.getRows.length) {
-                    this.currentPage = this.numOfPages;
+                    this.pagination.currentPage = this.numOfPages;
                 }
                 return this.getRows.slice(this.offset, this.limit);
             },
@@ -119,10 +121,10 @@
                     );
                 }
                 return this.source;
+            },
+            setPage(n) {
+                this.pagination.currentPage = n;
             }
-        },
-        setPage(n) {
-            this.currentPage = n;
         }
     }
 </script>

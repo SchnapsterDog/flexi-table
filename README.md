@@ -5,7 +5,7 @@ Flexible, mobile responsive Vue.js Table Component
 ## Installation
 
 ```js
-npm i --save-dev flexi-table
+npm install flexi-table --save-dev
 ```
 
 ### Browser
