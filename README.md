@@ -63,6 +63,3 @@ Once installed, it can be used as simply as:
 
 
 ##TODO
-
---Pagination
---Sorting
