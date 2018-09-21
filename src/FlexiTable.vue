@@ -1,22 +1,36 @@
 <template>
-    <div class="flexi">
-        <div class="flexi-container">
-            <div class="flexi-header">
-                <div v-for="(column, key) in columns"
-                     class="flexi-header-col">
-                    <span class="flexi-header-col-item">
-                    {{ column }}
-                </span>
-                </div>
-            </div>
-            <div class="main">
-                <div v-for="(row, key) in getRows"
-                     class="main-list">
-                    <div v-for="(col, index) in columns"
-                         class="main-item">
-                        {{ row['value_' + (index + 1)] }}
+    <div>
+        <div class="flexi-content">
+            <div class="flexi">
+                <div class="flexi-container">
+                    <div class="flexi-header">
+                        <div v-for="(column, key) in columns"
+                             class="flexi-header-col">
+                            <span class="flexi-header-col-item">
+                            {{ column }}
+                        </span>
+                        </div>
+                    </div>
+                    <div class="main">
+                        <div v-for="(row, key) in result"
+                             class="main-list">
+                            <div v-for="(col, index) in columns"
+                                 class="main-item">
+                                {{ row['value_' + (index + 1)] }}
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
+            <div class="flexi-pagination">
+                <ul class="pagination">
+                    <li v-for="n in numOfPages">
+                        <a href="" @click.prevent="setPage(n)">
+                            {{n}}
+                        </a>
+                    </li>
+                </ul>
+                <hr>
             </div>
         </div>
     </div>
@@ -24,15 +38,21 @@
 <script>
     /* Array
    * */
+    let dummyColumns = ['Column 1', 'Column 2', 'Column 3', 'Column 4', 'Column 5'];
 
-    let dummyColumns = ['Column 1', 'Column 2', 'Column 3', 'Column 4', 'Column 5'],
-        dummyRows = [
-        {row1: "Adam", row2: "M", row3: "Sunflower", row4: "BG022523A", row5: "WH_Austria"},
-        {row1: "Adam", row2: "M", row3: "Sunflower", row4: "BG022523A", row5: "WH_Austria"},
-        {row1: "Adam", row2: "M", row3: "Sunflower", row4: "BG022523A", row5: "WH_Austria"},
-        {row1: "Adam", row2: "M", row3: "Sunflower", row4: "BG022523A", row5: "WH_Austria"},
-        {row1: "Adam", row2: "M", row3: "Sunflower", row4: "BG022523A", row5: "WH_Austria"}
-    ];
+
+    /* function
+   * */
+    function getDummyRows(){
+        let result = [];
+        for(let i=0; i<5; i++){
+            let data = {
+                row1: "Row1", row2: 'Row2', row3: "Row3", row4: "Row4", row: "Row5"
+            };
+            result.push(data);
+        }
+        return result;
+    }
 
     /*  PROPS
         1. #columns           @type Array
@@ -48,7 +68,7 @@
         rows: {
             type: Array,//return default array if rows is null
             default: ()=> {//must be function if type is Array or Object
-                return dummyRows
+                return getDummyRows();
             }
         }
     };
@@ -57,10 +77,28 @@
         props,//add props into component
         data() {
             return {
+                currentPage: 1,
+                perPage: 4,
+                perPageOptions: [4, 8],
                 source: []//get final result
             }
         },
         computed: {
+            offset() {
+                return ((this.currentPage - 1) * this.perPage);
+            },
+            limit() {
+                return (this.offset + this.perPage);
+            },
+            numOfPages() {
+                return Math.ceil(this.getRows.length / this.perPage);
+            },
+            result() {
+                if (this.offset > this.getRows.length) {
+                    this.currentPage = this.numOfPages;
+                }
+                return this.getRows.slice(this.offset, this.limit);
+            },
             getRows() {
                 return this.setRows();
             }
@@ -68,7 +106,7 @@
         methods: {
             setRows(){
                 this.source = this.rows;//bind result to source
-                let max = this.source.length;
+                let max = this.columns.length;
                 let counter = 0;
                 for (let pos = 0; pos < this.source.length; pos++) {
                     Object.keys(this.source[pos]).map(e => {
@@ -83,10 +121,48 @@
                 }
                 return this.source;
             }
+        },
+        setPage(n) {
+            this.currentPage = n;
         }
     }
 </script>
 <style scoped>
+    /*
+     *  Custom Pagination CSS
+     *
+     */
+    .flexi-pagination{
+        display: flex;
+        margin: 0 30px;
+        align-items: center;
+    }
+
+    .pagination {
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        list-style: none;
+        color: black;
+    }
+
+    .pagination li a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        border-radius: 0!important;
+    }
+
+    .pagination li a.active {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    .pagination li a:hover:not(.active) {
+        background-color: #ddd;
+    }
+
     /*
      *  Custom Flexi Table
      *
