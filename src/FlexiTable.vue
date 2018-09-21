@@ -40,14 +40,13 @@
    * */
     let dummyColumns = ['Column 1', 'Column 2', 'Column 3', 'Column 4', 'Column 5'];
 
-
     /* function
    * */
     function getDummyRows(){
         let result = [];
         for(let i=0; i<5; i++){
             let data = {
-                row1: "Row1", row2: 'Row2', row3: "Row3", row4: "Row4", row: "Row5"
+                row1: 'Row'+(i+1), row2: 'Row'+(i+1), row3: 'Row'+(i+1), row4: 'Row'+(i+1), row: 'Row'+(i+1)
             };
             result.push(data);
         }
