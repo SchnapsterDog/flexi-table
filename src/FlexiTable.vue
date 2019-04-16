@@ -4,19 +4,19 @@
             <div class="flexi">
                 <div class="flexi-container">
                     <div class="flexi-header">
-                        <div v-for="(column, key) in columns"
+                        <div v-for="(row, key) in rows"
                              class="flexi-header-col">
                             <span class="flexi-header-col-item">
-                            {{ column }}
+                            {{ row }}
                         </span>
                         </div>
                     </div>
                     <div class="main">
-                        <div v-for="(row, key) in result"
+                        <div v-for="(column, key) in result"
                              class="main-list">
-                            <div v-for="(col, index) in columns"
+                            <div v-for="(col, index) in rows"
                                  class="main-item">
-                                {{ row['value_' + (index + 1)] }}
+                                {{ column['value_' + (index + 1)] }}
                             </div>
                         </div>
                     </div>
@@ -38,15 +38,15 @@
 <script>
     /* Array
    * */
-    let dummyColumns = ['Column 1', 'Column 2', 'Column 3', 'Column 4', 'Column 5'];
+    let dummyRows = ['Row 111', 'Row 2', 'Row 3', 'Row 4', 'Row 5'];
 
     /* function
    * */
-    function getDummyRows(){
+    function getDummyColumns(){
         let result = [];
-        for(let i=0; i<5; i++){
+        for(let i=0; i<40; i++){
             let data = {
-                row1: 'Row'+(i+1), row2: 'Row'+(i+1), row3: 'Row'+(i+1), row4: 'Row'+(i+1), row: 'Row'+(i+1)
+                row1: 'Column'+(i+1), row2: 'Column'+(i+1), row3: 'Column'+(i+1), row4: 'Column'+(i+1), row: 'Column'+(i+1)
             };
             result.push(data);
         }
@@ -54,20 +54,20 @@
     }
 
     /*  PROPS
-        1. #columns           @type Array
-        2. #rows              @type Array
+        1. #rows           @type Array
+        2. #column              @type Array
      */
     let props = {
-        columns: {
+        rows: {
             type: Array,
             default: () => {
-                return dummyColumns;
+                return dummyRows;
             }
         },
-        rows: {
+        columns: {
             type: Array,//return default array if rows is null
             default: ()=> {//must be function if type is Array or Object
-                return getDummyRows();
+                return getDummyColumns();
             }
         }
     };
@@ -90,22 +90,22 @@
                 return (this.offset + this.perPage);
             },
             numOfPages() {
-                return Math.ceil(this.getRows.length / this.perPage);
+                return Math.ceil(this.getColumns.length / this.perPage);
             },
             result() {
-                if (this.offset > this.getRows.length) {
+                if (this.offset > this.getColumns.length) {
                     this.currentPage = this.numOfPages;
                 }
-                return this.getRows.slice(this.offset, this.limit);
+                return this.getColumns.slice(this.offset, this.limit);
             },
-            getRows() {
-                return this.setRows();
+            getColumns() {
+                return this.setColumns();
             }
         },
         methods: {
-            setRows(){
-                this.source = this.rows;//bind result to source
-                let max = this.columns.length;
+            setColumns(){
+                this.source = this.columns;//bind result to source
+                let max = this.rows.length;
                 let counter = 0;
                 for (let pos = 0; pos < this.source.length; pos++) {
                     Object.keys(this.source[pos]).map(e => {
@@ -177,7 +177,6 @@
         margin: 10px 10px;
         display: flex;
         flex-direction: column;
-        box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.35);
     }
 
     .flexi-header {
