@@ -8,6 +8,12 @@ Flexible, mobile responsive Vue.js Table Component
 npm install flexi-table --save-dev
 ```
 
+### Module
+
+```js
+import FlexiTable from 'flexi-table';
+```
+
 ### Browser
 
 Include the script file, then install the component with `Vue.use(FlexiTable);` e.g.:
@@ -16,14 +22,8 @@ Include the script file, then install the component with `Vue.use(FlexiTable);` 
 <script type="text/javascript" src="node_modules/vuejs/dist/vue.min.js"></script>
 <script type="text/javascript" src="node_modules/flexi-table/dist/flexi-table.min.js"></script>
 <script type="text/javascript">
-  Vue.use(FlexiWidget);
+  Vue.use(FlexiTable);
 </script>
-```
-
-### Module
-
-```js
-import FlexiTable from 'flexi-table';
 ```
 
 ## Usage
@@ -31,23 +31,33 @@ import FlexiTable from 'flexi-table';
 Once installed, it can be used as simply as:
 
 ```html
-<flexi-table  :column="column"
-              :rows="rows">
+<flexi-table  :color="'green'"
+              :rows="rows"
+              :column="columns">
 </flexi-table>
 ```
 
 ```javascript
-  /*
-    Columns should be array like example below
+/*
+    Color has to be string. Developers could choose from four different colors;
+    -green
+    -red 
+    -nlue
+    -yellow
   */
- let columns = ['Column 1', 'Column 2', 'Column 3'];
+ let color = 'green';
+
+  /*
+    Rows should be array like example below
+  */
+ let rows = ['Row 1', 'Row 2', 'Row 3'];
    /*
-     Rows should be array as well
+     Columns should be array as well
    */
- let rows = [
-                {whatEverName: "Adam", whatEverProduct: "M", whatEverTotal: "Sunflower"},
-                {whatEverName: "Adam", whatEverProduct: "M", whatEverTotal: "Sunflower"},
-                {whatEverName: "Adam", whatEverProduct: "M", whatEverTotal: "Sunflower"},
+ let columns = [
+                {columnName: "Adam", columnType: "Some Product", columnSize: "XXL"},
+                {columnName: "Adam", columnType: "Some Product", columnSize: "XXL"},
+                {columnName: "Adam", columnType: "Some Products", columnSize: "Sunflower"},
              ] 
 ```
 
@@ -55,10 +65,11 @@ Once installed, it can be used as simply as:
 
 ### Props
 
-| Name        | Type           | Description                                                             |
-| :-----      | :-------       | :----------------------------------------------- |
-| columns       | Array        | Set columns / headers                            |
-| rows          | Array        | Set rows                                         |
+| Name        | Type        | Description                                                             |
+| :-----      | :-------    | :----------------------------------------------- 
+| color       | String      | Set Color
+| rows        | Array       | Set rows / headers                            |
+| columns     | Array       | Set columns                                          |
 
 
 

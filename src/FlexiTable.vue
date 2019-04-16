@@ -3,7 +3,9 @@
         <div class="flexi-content">
             <div class="flexi">
                 <div class="flexi-container">
-                    <div class="flexi-header">
+                    <div class="flexi-header" 
+                         :class="color"
+                    >
                         <div v-for="(row, key) in rows"
                              class="flexi-header-col">
                             <span class="flexi-header-col-item">
@@ -36,6 +38,9 @@
     </div>
 </template>
 <script>
+   //Default collor
+   let defaultColor = 'green';
+
     /* Array
    * */
     let dummyRows = ['Row 111', 'Row 2', 'Row 3', 'Row 4', 'Row 5'];
@@ -54,10 +59,15 @@
     }
 
     /*  PROPS
+        1. #color          @type String
         1. #rows           @type Array
-        2. #column              @type Array
+        2. #columns        @type Array
      */
     let props = {
+        color: {
+            type: String,
+            default: defaultColor
+        },
         rows: {
             type: Array,
             default: () => {
@@ -79,7 +89,7 @@
                 currentPage: 1,
                 perPage: 4,
                 perPageOptions: [4, 8],
-                source: []//get final result
+                source: [],//get final result
             }
         },
         computed: {
@@ -103,6 +113,9 @@
             }
         },
         methods: {
+            setColor(color) {
+                this.color = color;
+            },
             setColumns(){
                 this.source = this.columns;//bind result to source
                 let max = this.rows.length;
@@ -127,6 +140,22 @@
     }
 </script>
 <style scoped>
+
+    .green {
+        background: #0fd079;
+    }
+
+    .blue {
+        background: #6291ff;
+    }
+
+    .red {
+        background: #d47389;
+    }
+    
+    .yellow {
+        background: #bce228;
+    }
     /*
      *  Custom Pagination CSS
      *
@@ -186,7 +215,7 @@
         padding: 7px;
         font-size: 12px;
         font-family: sans-serif;
-        background: #0fd079;
+        
         color: white;
         cursor: pointer;
     }
