@@ -39,10 +39,10 @@ Once installed, it can be used as simply as:
 
 ```javascript
 /*
-    Color has to be string. Developers could choose from four different colors;
+    Color has to be string. Four options available for test purposes
     -green
     -red 
-    -nlue
+    -blue
     -yellow
   */
  let color = 'green';
@@ -57,7 +57,7 @@ Once installed, it can be used as simply as:
  let columns = [
                 {columnName: "Adam", columnType: "Some Product", columnSize: "XXL"},
                 {columnName: "Adam", columnType: "Some Product", columnSize: "XXL"},
-                {columnName: "Adam", columnType: "Some Products", columnSize: "Sunflower"},
+                {columnName: "Adam", columnType: "Some Products",columnSize: "M"},
              ] 
 ```
 
