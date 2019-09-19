@@ -33,7 +33,7 @@ Once installed, it can be used as simply as:
 ```html
 <flexi-table  :color="'green'"
               :rows="rows"
-              :column="columns">
+              :columns="columns">
 </flexi-table>
 ```
 
