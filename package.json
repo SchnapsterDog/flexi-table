@@ -1,6 +1,6 @@
 {
   "name": "flexi-table",
-  "version": "1.1.2",
+  "version": "1.1.4",
   "description": "A Vue.js component Table",
   "main": "dist/flexi-table.js",
   "scripts": {

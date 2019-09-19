@@ -161,16 +161,14 @@
      *
      */
     .flexi-pagination{
-        display: flex;
-        margin: 0 30px;
-        align-items: center;
-        justify-content: center;
+       margin: 0 30px; 
     }
 
     .pagination {
         padding: 0;
         display: flex;
         justify-content: center;
+        align-content: center;
         list-style: none;
         color: black;
     }
