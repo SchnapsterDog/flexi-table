@@ -2,6 +2,12 @@
 
 Flexible, mobile responsive Vue.js Table Component
 
+## Demo
+
+Demo is uploaded on my server. Check this out:
+
+https://flexivue.info
+
 ## Installation
 
 ```js
@@ -37,40 +43,41 @@ Once installed, it can be used as simply as:
 </flexi-table>
 ```
 
-```javascript
-/*
-    Color has to be string. Four options available for test purposes
-    -green
-    -red 
-    -blue
-    -yellow
-  */
- let color = 'green';
+- Color prop is of type string. Four options available:
+  1. green
+  2. red 
+  3. blue
+  4. yellow
 
-  /*
-    Rows should be array like example below
-  */
- let rows = ['Row 1', 'Row 2', 'Row 3'];
-   /*
-     Columns should be array as well
-   */
+```javascript
+ let color = 'green';
+ ```
+
+- Rows (Headers) data should be stored in array like sample below:
+
+```javascript
+ let rows = [
+   'Row 1', 
+   'Row 2',
+   'Row 3'
+ ];
+ ```
+- Columns data should be stored as array like:
+
+```javascript
  let columns = [
-                {columnName: "Adam", columnType: "Some Product", columnSize: "XXL"},
-                {columnName: "Adam", columnType: "Some Product", columnSize: "XXL"},
-                {columnName: "Adam", columnType: "Some Products",columnSize: "M"},
-             ] 
+   {columnName: "Adam", columnType: "Some Product", columnSize: "XXL"},
+   {columnName: "Adam", columnType: "Some Product", columnSize: "XXL"},
+   {columnName: "Adam", columnType: "Some Products",columnSize: "M"},
+ ] 
 ```
 
 ## API
 
 ### Props
 
-| Name        | Type        | Description                                                             |
+| Name        | Type        | Description                                                             
 | :-----      | :-------    | :----------------------------------------------- 
 | color       | String      | Set Color
-| rows        | Array       | Set rows / headers                            |
-| columns     | Array       | Set columns                                          |
-
-
-
-##TODO
+| rows        | Array       | Set rows / headers                            
+| columns     | Array       | Set columns                                         
