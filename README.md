@@ -37,17 +37,18 @@ Include the script file, then install the component with `Vue.use(FlexiTable);` 
 Once installed, it can be used as simply as:
 
 ```html
-<flexi-table  :color="'green'"
-              :rows="rows"
-              :columns="columns">
-</flexi-table>
+<flexi-table 
+  :color="'green'"
+  :rows="rows"
+  :columns="columns"
+></flexi-table>
 ```
 
 - Color prop is of type string. Four options available:
-  1. green
-  2. red 
-  3. blue
-  4. yellow
+  - green
+  - red 
+  - blue
+  - yellow
 
 ```javascript
  let color = 'green';
