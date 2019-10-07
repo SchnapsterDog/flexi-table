@@ -39,21 +39,21 @@ Once installed, it can be used as simply as:
 
 ```javascript
 /*
-    Color has to be string. Four options available for test purposes
-    -green
-    -red 
-    -blue
-    -yellow
-  */
- let color = 'green';
+Color has to be string. Four options available for test purposes
+  -green
+  -red 
+  -blue
+  -yellow
+*/
+let color = 'green';
 
-  /*
-    Rows should be array like example below
-  */
- let rows = ['Row 1', 'Row 2', 'Row 3'];
-   /*
-     Columns should be array as well
-   */
+/*
+  Rows should be array like example below
+*/
+let rows = ['Row 1', 'Row 2', 'Row 3'];
+/*
+    Columns should be array as well
+*/
  let columns = [
                 {columnName: "Adam", columnType: "Some Product", columnSize: "XXL"},
                 {columnName: "Adam", columnType: "Some Product", columnSize: "XXL"},
