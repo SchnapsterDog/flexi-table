@@ -1,26 +1,60 @@
-# Flexi Table
+[[Flexi Table]](https://akrinum.com)
 
-Flexible, mobile responsive Vue.js Table Component
+[![prs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/SchnapsterDog/flexi-table/pulls)
+[![npm version](https://img.shields.io/bundlephobia/min/flexi-table?style=flat-square)](https://www.npmjs.com/package/flexi-table)
+[![npm](https://img.shields.io/npm/dw/flexi-table?style=flat-square)](https://www.npmjs.com/package/flexi-table)
 
-## Demo
+Welcome to [version 1.1.5]() of **Flexi Table**, an easy to implement, and well maintained **Vue.js** component.
 
-Demo is uploaded on my server. Check this out:
+You can support this project by giving it a star, or following the author. :heart:.
 
-https://flexivue.info
+## :exclamation::exclamation::exclamation: This is README for FlexiTable component :exclamation::exclamation::exclamation:
 
-## Installation
+Flexi Table vue component made by [Oliver](https://akrinum.com)
+
+## ⚙ Installation
 
 ```js
 npm install flexi-table --save-dev
 ```
 
-### Module
+## 🤔 How to use it? 
+
+### Module usage 
 
 ```js
 import FlexiTable from 'flexi-table';
+
+export default {
+  components: {
+    FlexiTable
+  },
+  data() {
+    return {
+      rows: [
+        'Row 1', 
+        'Row 2',
+        'Row 3'
+      ],
+      columns: [
+        {columnName: "Adam", columnType: "Some Product", columnSize: "XXL"},
+        {columnName: "Adam", columnType: "Some Product", columnSize: "XXL"},
+        {columnName: "Adam", columnType: "Some Products",columnSize: "M"},
+      ] 
+    }
+  }
+}
 ```
 
-### Browser
+```html
+<flexi-table 
+  :color="'green'"
+  :rows="rows"
+  :columns="columns"
+/>
+```
+
+### Browser usage
 
 Include the script file, then install the component with `Vue.use(FlexiTable);` e.g.:
 
@@ -31,54 +65,16 @@ Include the script file, then install the component with `Vue.use(FlexiTable);` 
   Vue.use(FlexiTable);
 </script>
 ```
-
-## Usage
-
-Once installed, it can be used as simply as:
-
-```html
-<flexi-table 
-  :color="'green'"
-  :rows="rows"
-  :columns="columns"
-></flexi-table>
-```
-
-- Color prop is of type string. Four options available:
-  - green
-  - red 
-  - blue
-  - yellow
-
-```javascript
- let color = 'green';
- ```
-
-- Rows (Headers) data should be stored in array like sample below:
-
-```javascript
- let rows = [
-   'Row 1', 
-   'Row 2',
-   'Row 3'
- ];
- ```
-- Columns data should be stored as array like:
-
-```javascript
- let columns = [
-   {columnName: "Adam", columnType: "Some Product", columnSize: "XXL"},
-   {columnName: "Adam", columnType: "Some Product", columnSize: "XXL"},
-   {columnName: "Adam", columnType: "Some Products",columnSize: "M"},
- ] 
-```
-
 ## API
 
-### Props
+### ❔ Props
 
 | Name        | Type        | Description                                                             
 | :-----      | :-------    | :----------------------------------------------- 
-| color       | String      | Set Color
-| rows        | Array       | Set rows / headers                            
-| columns     | Array       | Set columns                                         
+| color       | String      | Four colors available (green, red, blue and yelow)
+| rows        | Array       | Set rows / headers of the table                          
+| columns     | Array       | Set columns of the table                                     
+
+## License
+
+[MIT](http://opensource.org/licenses/MIT)
